@@ -5,6 +5,17 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 	const isDev = options.mode === 'development'
 
+	const assetLoader = {
+		test: /\.(png|jpg|gif)$/i,
+		type: 'asset/resource',
+	}
+
+	const svgLoader = {
+		test: /\.svg$/,
+		// icon: true for width/height adjustment
+		use: [{ loader: '@svgr/webpack', options: { icon: true } }],
+	}
+
 	const cssLoader = {
 		loader: 'css-loader',
 		options: {
@@ -30,5 +41,5 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 		exclude: /node_modules/,
 	}
 
-	return [scssLoader, tsLoader]
+	return [assetLoader, scssLoader, tsLoader, svgLoader]
 }

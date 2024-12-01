@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import classes from './App.module.scss'
 import { Link, Outlet } from 'react-router-dom'
+import kittyCat from '@/assets/cat.jpg'
+import Icon from '@/assets/icon.svg'
 
 export const App = () => {
 	const [counter, setCounter] = useState(0)
@@ -19,7 +21,10 @@ export const App = () => {
 			<button className={classes.button} onClick={dec}>
 				dec
 			</button>
+			<div>{kittyCat}</div>
+			<img width={100} height={100} src={kittyCat} alt="cat" />
 			<Outlet />
+			<Icon width={200} height={200} />
 		</div>
 	)
 }
