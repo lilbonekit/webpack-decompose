@@ -4,6 +4,7 @@ import HTMLWebpackPlugin from 'html-webpack-plugin'
 import webpack from 'webpack'
 import { type BuildOptions } from './types/types'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
+import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin'
 
 export function buildPlugin({
 	mode,
@@ -26,6 +27,8 @@ export function buildPlugin({
 
 	if (isDev) {
 		plugins.push(new webpack.ProgressPlugin())
+		// Checking types in separate thread
+		plugins.push(new ForkTsCheckerPlugin())
 	}
 
 	if (isProd) {

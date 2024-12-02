@@ -4,6 +4,10 @@ import { Link, Outlet } from 'react-router-dom'
 import kittyCat from '@/assets/cat.jpg'
 import Icon from '@/assets/icon.svg'
 
+// function toDo(a: number) {
+// 	console.log(`TODO: ${a}`)
+// }
+
 export const App = () => {
 	const [counter, setCounter] = useState(0)
 
@@ -13,6 +17,9 @@ export const App = () => {
 	if (__PLATFORM__ === 'desktop') {
 		return <div>Desktop platform</div>
 	}
+
+	// let's check it separately
+	// toDo('ts check')
 
 	if (__PLATFORM__ === 'mobile') {
 		return <div>Mobile platform</div>

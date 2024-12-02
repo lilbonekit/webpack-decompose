@@ -37,7 +37,15 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
 
 	const tsLoader = {
 		test: /\.tsx?$/,
-		use: 'ts-loader',
+		use: {
+			// ts-loader is able to work with JSX by default
+			// If it's not installed it requires to install babel-loader
+			loader: 'ts-loader',
+			options: {
+				// For not check types
+				transpileOnly: true,
+			},
+		},
 		exclude: /node_modules/,
 	}
 
