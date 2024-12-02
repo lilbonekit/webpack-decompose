@@ -1,0 +1,14 @@
+// We could use babel.config.json or keep it in webpack config
+// babel config could be useful for jest for instance
+{
+	"presets": [
+		"@babel/preset-env",
+		"@babel/preset-typescript",
+		[
+			"@babel/preset-react",
+			{
+				"runtime": "automatic"
+			}
+		]
+	]
+}
