@@ -6,6 +6,8 @@ import { type BuildOptions } from './types/types'
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin'
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin'
+import path from 'path'
+import CopyPlugin from 'copy-webpack-plugin'
 
 export function buildPlugin({
 	mode,
@@ -19,6 +21,7 @@ export function buildPlugin({
 	const plugins: Configuration['plugins'] = [
 		new HTMLWebpackPlugin({
 			template: paths.html,
+			favicon: path.resolve(paths.public, 'favicon.ico'),
 		}),
 		new DefinePlugin({
 			__PLATFORM__: JSON.stringify(platform),
@@ -38,6 +41,16 @@ export function buildPlugin({
 			new MiniCssExtractPlugin({
 				filename: 'css/[name].[contenthash:8].css',
 				chunkFilename: 'css/[name].[contenthash:8].css',
+			})
+		)
+		plugins.push(
+			new CopyPlugin({
+				patterns: [
+					{
+						from: path.resolve(paths.public, 'locales'),
+						to: path.resolve(paths.output, 'locales'),
+					},
+				],
 			})
 		)
 		if (analyzer) plugins.push(new BundleAnalyzerPlugin())
