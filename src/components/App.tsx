@@ -4,9 +4,13 @@ import { Link, Outlet } from 'react-router-dom'
 import kittyCat from '@/assets/cat.jpg'
 import Icon from '@/assets/icon.svg'
 
-// function toDo(a: number) {
-// 	console.log(`TODO: ${a}`)
-// }
+function toDo() {
+	toDo2()
+}
+
+function toDo2() {
+	throw new Error()
+}
 
 export const App = () => {
 	const [counter, setCounter] = useState(0)
@@ -31,7 +35,7 @@ export const App = () => {
 			<Link to={'/shop'}>Shop</Link>
 			<h1>{counter}</h1>
 			<h2 data-testid="platform">PLATFORM={__PLATFORM__}</h2>
-			<button className={classes.button} onClick={inc}>
+			<button className={classes.button} onClick={toDo}>
 				inc
 			</button>
 			<button className={classes.button} onClick={dec}>
