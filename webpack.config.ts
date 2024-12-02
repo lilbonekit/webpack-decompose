@@ -2,15 +2,20 @@ import path from 'path'
 import webpack from 'webpack'
 
 import { buildWebpack } from './config/build/buildWebpack'
-import { BuildPaths, BuildMode } from './config/build/types/types'
+import {
+	BuildPaths,
+	BuildMode,
+	BuildPlatform,
+} from './config/build/types/types'
 
 interface EnvVariables {
 	mode: BuildMode
 	port: number
 	analyzer?: boolean
+	platform?: BuildPlatform
 }
 
-export default ({ mode, port, analyzer }: EnvVariables) => {
+export default ({ mode, port, analyzer, platform }: EnvVariables) => {
 	const paths: BuildPaths = {
 		output: path.resolve(__dirname, 'build'),
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
@@ -21,6 +26,7 @@ export default ({ mode, port, analyzer }: EnvVariables) => {
 	const config: webpack.Configuration = buildWebpack({
 		port: port ?? 3000,
 		mode: mode ?? 'development',
+		platform: platform ?? 'desktop',
 		analyzer,
 		paths,
 	})

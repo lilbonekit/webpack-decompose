@@ -19,3 +19,6 @@ declare module '*.svg' {
 
 	export default ReactComponent
 }
+
+declare const __PLATFORM__: 'desktop' | 'mobile'
+declare const __ENV__: 'production' | 'development'

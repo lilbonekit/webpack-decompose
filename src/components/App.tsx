@@ -10,11 +10,20 @@ export const App = () => {
 	const inc = () => setCounter((prev) => ++prev)
 	const dec = () => setCounter((prev) => --prev)
 
+	if (__PLATFORM__ === 'desktop') {
+		return <div>Desktop platform</div>
+	}
+
+	if (__PLATFORM__ === 'mobile') {
+		return <div>Mobile platform</div>
+	}
+
 	return (
 		<div className={classes.appContainer}>
 			<Link to={'/about'}>About</Link>
 			<Link to={'/shop'}>Shop</Link>
 			<h1>{counter}</h1>
+			<h2>PLATFORM={__PLATFORM__}</h2>
 			<button className={classes.button} onClick={inc}>
 				inc
 			</button>
