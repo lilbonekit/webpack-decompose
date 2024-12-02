@@ -14,16 +14,16 @@ export const App = () => {
 	const inc = () => setCounter((prev) => ++prev)
 	const dec = () => setCounter((prev) => --prev)
 
-	if (__PLATFORM__ === 'desktop') {
-		return <div>Desktop platform</div>
-	}
+	// if (__PLATFORM__ === 'desktop') {
+	// 	return <div>Desktop platform</div>
+	// }
 
-	// let's check it separately
-	// toDo('ts check')
+	// // let's check it separately
+	// // toDo('ts check')
 
-	if (__PLATFORM__ === 'mobile') {
-		return <div>Mobile platform</div>
-	}
+	// if (__PLATFORM__ === 'mobile') {
+	// 	return <div>Mobile platform</div>
+	// }
 
 	return (
 		<div className={classes.appContainer}>

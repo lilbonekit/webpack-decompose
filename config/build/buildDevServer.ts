@@ -7,5 +7,6 @@ export function buildDevServer(options: BuildOptions): DevServerConfiguration {
 		open: true,
 		// for client side routing
 		historyApiFallback: true,
+		hot: true,
 	}
 }
