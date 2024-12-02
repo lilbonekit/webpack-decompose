@@ -26,11 +26,11 @@ export const App = () => {
 	// }
 
 	return (
-		<div className={classes.appContainer}>
+		<div data-testid="App" className={classes.appContainer}>
 			<Link to={'/about'}>About</Link>
 			<Link to={'/shop'}>Shop</Link>
 			<h1>{counter}</h1>
-			<h2>PLATFORM={__PLATFORM__}</h2>
+			<h2 data-testid="platform">PLATFORM={__PLATFORM__}</h2>
 			<button className={classes.button} onClick={inc}>
 				inc
 			</button>
